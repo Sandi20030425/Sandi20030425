@@ -11,7 +11,7 @@ from time import sleep
 # OFFICIAL SELLER IS 'ANAS' AT TELEGRAM !!! #
 #############################################
 
-BASE_URL: str = "https://www.cpmewan1999.cpmewan.com/api"
+BASE_URL: str = "https://cpmnuker.anasov.ly/v2/api"
 
 class CPMNuker:
 
