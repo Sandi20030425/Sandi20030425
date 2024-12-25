@@ -11,7 +11,7 @@ from rich.style import Style
 import pystyle
 from pystyle import Colors, Colorate
 
-from StarcoolMod import StarcoolMod
+from starcoolmod import StarcoolMod1
 
 __CHANNEL_USERNAME__ = "starcoolchannel"
 __GROUP_USERNAME__   = "starcoolvip"
