@@ -1,26 +1,22 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
-import os
-from dotenv import load_dotenv
+from telegram.ext import Application, CommandHandler, ContextTypes
 
-# Load .env file
-load_dotenv()
-TOKEN = os.getenv("7802166659:AAFTzQphGhKhimOHx_KoTT0NkskjwOedBck")
+TOKEN = "7802166659:AAFTzQphGhKhimOHx_KoTT0NkskjwOedBck"
 
-def start(update: Update, context: CallbackContext):
-    update.message.reply_text("Halo, saya adalah bot Anda!")
+# Fungsi yang akan dijalankan ketika bot menerima perintah /start
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text("Halo, saya bot! Ada yang bisa saya bantu?")
 
-def echo(update: Update, context: CallbackContext):
-    update.message.reply_text(f"Kamu berkata: {update.message.text}")
-
+# Fungsi utama untuk menjalankan bot
 def main():
-    updater = Updater(TOKEN)
-    dp = updater.dispatcher
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, echo))
-    updater.start_polling()
-    updater.idle()
+    # Membuat aplikasi bot menggunakan token
+    application = Application.builder().token(TOKEN).build()
 
-if __name__ == '__main__':
+    # Menambahkan handler untuk perintah /start
+    application.add_handler(CommandHandler("start", start))
+
+    # Mulai bot
+    application.run_polling()
+
+if __name__ == "__main__":
     main()
-    
